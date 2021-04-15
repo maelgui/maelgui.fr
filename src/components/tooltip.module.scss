@@ -1,0 +1,40 @@
+.wrapper {
+    position: relative;
+    display: inline-block;
+
+    .tooltip {
+        visibility: hidden;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 10px;
+        border-radius: 2px;
+        font-size: 1rem;
+        white-space: nowrap;
+    
+        z-index: 1;
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 0; 
+            height: 0; 
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            
+            border-top: 5px solid black;
+        }
+    }
+
+    &:hover .tooltip {
+        visibility: visible;
+    }
+}

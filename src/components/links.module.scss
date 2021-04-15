@@ -1,0 +1,20 @@
+.links {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+
+    a {
+        margin: 0 .5rem;
+        border-bottom: 1px solid var(--background-color);
+
+        &:hover {
+            border-bottom: 1px solid var(--primary-color);
+        }
+    }
+    
+    svg {
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0.75rem;
+    }
+}

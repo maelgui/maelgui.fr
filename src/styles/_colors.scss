@@ -1,0 +1,15 @@
+:root {
+    --primary-color: hsl(211, 100%, 50%);
+    --text-color: hsl(0, 0%, 30%);
+    --background-color: hsl(0, 0%, 100%);
+    --particles-color: hsl(211, 100%, 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: hsl(211, 100%, 75%);
+        --text-color: hsl(0, 0%, 90%);
+        --background-color: hsl(205, 31%, 12%);
+        --particles-color: hsl(0, 0%, 100%);
+    }
+}

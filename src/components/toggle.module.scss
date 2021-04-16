@@ -1,0 +1,20 @@
+.toggle {
+    display: inline-flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--text-color);
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 0;
+
+    path {
+        color: var(--background-color)
+    }
+
+    svg {
+        margin: 0.75rem;
+    }
+}

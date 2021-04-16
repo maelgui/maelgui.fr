@@ -7,7 +7,7 @@ const About = () => {
     return (
         <div>
             <h1 className={styles.title}>Mael Guillossou</h1>
-            <div className={styles.headline}>I'm a Cyber Security Engineer at <Tooltip help="Hire me!">___</Tooltip>. </div>
+            <div className={styles.headline}>I'm a Cyber Security Engineer at <Tooltip help="Hire me!" position="top">___</Tooltip>. </div>
         </div>
     )
 }

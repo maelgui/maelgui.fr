@@ -3,10 +3,10 @@ import * as styles from "./tooltip.module.scss";
 
 const Tooltip = (props) => {
     return (
-        <div className={styles.wrapper}>
+        <span className={styles.wrapper}>
             {props.children}
-            <span className={styles.tooltip}>{props.help}</span>
-        </div>
+            <span className={styles.tooltip} data-position={props.position}>{props.help}</span>
+        </span>
     )
 }
 

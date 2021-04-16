@@ -1,3 +1,4 @@
+import React, { useState, useRef } from "react";
 import { graphql } from 'gatsby'
 import Helmet from "react-helmet";
 import Particles from "react-particles-js";
@@ -6,29 +7,45 @@ import particles from "../assets/particles.json";
 import About from "../components/about";
 import Links from "../components/links";
 import * as styles from './index.module.scss';
+import Toggle from "../components/toggle";
 
 
-const IndexPage = () => {
+const IndexPage = ({data}) => {
+  const [theme, setTheme] = useState('light');
+  const rootRef = useRef(null);
+
   React.useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    mq.addEventListener('change', setColor);
-    setColor();
+    colorSchemeChanged(mq);
+    mq.addEventListener('change', colorSchemeChanged);
     return () => {
-      mq.removeEventListener('change', setColor);
+      mq.removeEventListener('change', colorSchemeChanged);
     };
   }, []);
 
-  const setColor = () => {
-    _setColor(getComputedStyle(document.documentElement).getPropertyValue('--particles-color').trim());
+  const colorSchemeChanged = (mq) => {
+    setTheme(mq.matches ? 'dark' : 'light')
   };
 
-  const [color, _setColor] = useState(0);
+  const modeToggle = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const getColor = () => {
+    return theme === 'dark' ? 'hsl(0, 0%, 100%)' : 'hsl(211, 100%, 50%)';
+  };
+
+  
+
 
 
   return (
+    <div ref={rootRef} data-theme={theme}>
       <Helmet>
         <title>{data.site.siteMetadata.title}</title>
       </Helmet>
+      <Particles params={{...particles, particles: {...particles.particles, color: {value: getColor()} } }} className={styles.particles} />
+      <Toggle onClick={modeToggle} theme={theme}/>
       <div className={styles.container}>
         <div className={styles.content}>
           <About/>

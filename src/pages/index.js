@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import { graphql } from 'gatsby'
+import Helmet from "react-helmet";
 import Particles from "react-particles-js";
 
 import particles from "../assets/particles.json";
@@ -25,8 +26,9 @@ const IndexPage = () => {
 
 
   return (
-    <div>
-      <Particles params={{...particles, particles: {...particles.particles, color: {value: color} } }} className={styles.particles} />
+      <Helmet>
+        <title>{data.site.siteMetadata.title}</title>
+      </Helmet>
       <div className={styles.container}>
         <div className={styles.content}>
           <About/>
@@ -36,5 +38,15 @@ const IndexPage = () => {
     </div>
   )
 }
+
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
 
 export default IndexPage
